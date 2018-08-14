@@ -1,8 +1,191 @@
+@import '~antd/dist/antd.css';
 h1 {
   color: green;
 }
 
 body {
+  /* background: #171717; */
   text-align: center;
   margin: auto;
 }
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+#app {
+  min-height: 50vh;
+  height: 100vh;
+}
+
+#app .ant-row {
+  height:100vh;
+}
+
+.chatcontainer {
+  padding:20px;
+}
+
+/* =================chatbot part=================== */
+.chat-layout {
+  border-radius: 10px 10px 0 0;
+  margin: 15px 0;
+}
+.chat-header {
+  border-radius: 10px 10px 0 0;
+  background-color: rgb(85, 183, 46);
+  text-align: left;
+  padding: 0 20px;
+  font-size: 16px;
+  color:white;
+  font-weight: bold;
+}
+
+.chat-content {
+  height:68vh;
+  display: flex;
+    flex: 1;
+    flex-direction: column;
+  overflow: auto;
+}
+
+#chatlist{
+  padding:25px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.chat-list {
+  position: relative;
+  z-index: 3;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.chat-message--anchor-right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  max-width: 30vw;
+  margin-left: auto; }
+
+.chat-message--bot {
+  max-width: 75%; }
+  .chat-message--bot p {
+    position: relative;
+    padding-left: 14px; }
+    .chat-message--bot p:before {
+      content: "";
+      position: absolute;
+      height: calc(21px + .00673 * (100vw - 1650px));
+      width: 3px;
+      background-color: #0f6dff;
+      top: 1px;
+      left: 4px;
+      border-radius: 2px; }
+      @media (max-width: 1056px) {
+        .chat-message--bot p:before {
+          height: calc(21px + .00673 * (100vw - 1056px)); } }
+      @media (max-width: 500px) {
+        .chat-message--bot p:before {
+          height: calc(21px + .00673 * (100vw - 500px)); } }
+
+.chat-message--user {
+  border-radius: 1.5em;
+  padding: 10px 20px;
+  background: #757575;
+  position: relative; }
+  .chat-message--user:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 0px;
+    bottom: -7px;
+    border-top: 20px solid;
+    border-right: 21px solid;
+    border-bottom: 8px solid;
+    border-left: 18px solid;
+    border-color: transparent #757575 transparent transparent; }
+
+.ant-layout-footer {
+  padding: 2.5vw;
+}
+
+input{
+  border-style: none;
+  border-width: 0;
+  background: none;
+  font-size: 18px;
+  line-height: 1.375em;
+}
+.inputline input{
+  width: 100%;
+  border-bottom: 1px solid #252525;
+  padding-bottom: 10px;
+  border-radius: 0;
+  outline:none;
+  cursor: text;
+}
+
+/* =================chatbot part=================== */
+
+
+
+/* =================learning css=================== */
+/* body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+} */
+
+
+/* =================learning css=================== */

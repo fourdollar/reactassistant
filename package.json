@@ -1,7 +1,7 @@
 {
-  "name": "simple-react-full-stack",
+  "name": "JRsample",
   "version": "1.0.0",
-  "description": "Boilerplate to build a full stack web application using React, Node.js, Express and Webpack.",
+  "description": "a full stack web application using React, Node.js, Express and Webpack.",
   "main": "src/server/index.js",
   "scripts": {
     "start": "node src/server/index.js",
@@ -10,9 +10,12 @@
     "server": "nodemon src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Sandeep Raveesh",
-  "license": "ISC",
+  "author": "Siyuan Feng",
+  "license": "MIT",
   "dependencies": {
+    "antd": "^3.8.1",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"

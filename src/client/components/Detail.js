@@ -83,7 +83,7 @@ export default class Detail extends React.Component {
           visible={this.state.detailvisible}
         >
           <p style={{ pStyle, marginBottom: 24 }}>予約詳細</p>
-          <p style={pStyle}>予約者情報</p>
+          <p style={pStyle}>購入者情報</p>
           <Row>
             <Col span={12}>
               <DescriptionItem title="Full Name" content="Lily" />{' '}
@@ -120,25 +120,25 @@ export default class Detail extends React.Component {
           <p style={pStyle}>列車情報</p>
           <Row>
             <Col span={12}>
-              <DescriptionItem title="Position" content="Programmer" />
+              <DescriptionItem title="From" content="tokyo" />
             </Col>
             <Col span={12}>
-              <DescriptionItem title="Responsibilities" content="Coding" />
+              <DescriptionItem title="To" content="osaka" />
             </Col>
           </Row>
           <Row>
             <Col span={12}>
-              <DescriptionItem title="Department" content="AFX" />
+              <DescriptionItem title="発車" content="18:00" />
             </Col>
             <Col span={12}>
-              <DescriptionItem title="Supervisor" content={<a>Lin</a>} />
+              <DescriptionItem title="到着" content={<a>20:30</a>} />
             </Col>
           </Row>
           <Row>
             <Col span={24}>
               <DescriptionItem
-                title="Skills"
-                content="C / C + +, data structures, software engineering, operating systems, computer networks, databases, compiler theory, computer architecture, Microcomputer Principle and Interface Technology, Computer English, Java, ASP, etc."
+                title="お知らせ"
+                content="西日本、四国、九州地方の大雨の影響により、列車の運休・運転見合わせ・運転計画の変更が発生しております。えきねっと「乗換・運賃案内」では、大雨の影響に伴う運休・時刻変更には対応しておりませんので、ご利用の際には、事前に鉄道各社ホームページ等にて運行状況をご確認いただきますようお願い申し上げます"
               />
             </Col>
           </Row>
@@ -157,8 +157,8 @@ export default class Detail extends React.Component {
               <DescriptionItem
                 title="Github"
                 content={(
-                  <a href="http://github.com/ant-design/ant-design/">
-                    github.com/ant-design/ant-design/
+                  <a href="https://www.eki-net.com/top/index.html">
+                    www.eki-net.com/top/index.html
                   </a>
                 )}
               />

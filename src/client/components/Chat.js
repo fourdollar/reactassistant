@@ -7,19 +7,62 @@ function Userinput(props){
   return (
     <div className="chat-message chat-message--anchor-right">
       <p className="chat-message--user">
-        {props.value}
+        {props.value.text}
       </p>
     </div>
   );
 }
-function Watsonoutput(props){
-  return (
-    <div className="chat-message chat-message--bot">
-      <p>
-        {props.value}
-      </p>
-    </div>
-  );
+
+class Watsonoutput extends React.Component {
+  renderButton(i,label){
+    return(
+      <Watsonbutton
+        key={i}
+        label={this.props.value.button[i].label}
+        value={this.props.value.button[i].value.input.text}
+        onClick={()=>this.props.handleClick(label)} />
+    )
+  }
+  render() {
+    if (this.props.value.button) {
+      var buttonlist=[];
+      var buttoncontent=this.props.value.button;
+
+      for(var i=0;i<buttoncontent.length;i++){
+        buttonlist.push(this.renderButton(i,buttoncontent[i].value.input.text));
+      }
+      return (
+        <div className="chat-message chat-message--bot">
+          <p>
+            {this.props.value.text}
+          </p>
+          {buttonlist}
+        </div>
+      );
+    }else{
+      return (
+        <div className="chat-message chat-message--bot">
+          <p>
+            {this.props.value.text}
+          </p>
+        </div>
+      );
+    }
+  }
+}
+
+class Watsonbutton extends React.Component {
+
+  sendRequest(){
+    this.props.handleClick("hi");
+  }
+  render() {
+    return (
+      <button className="watsonbutton" onClick={()=>this.props.onClick()}>
+        {this.props.label}
+      </button>
+    );
+  }
 }
 
 export default class Chat extends React.Component {
@@ -32,11 +75,11 @@ export default class Chat extends React.Component {
   creatElement(i){
     if (this.props.chatcontent[i].from == "user") {
       return (
-        <Userinput key={i} value={this.props.chatcontent[i].text} />
+        <Userinput key={i} value={this.props.chatcontent[i]} />
       );
     }else if (this.props.chatcontent[i].from == "watson") {
       return(
-        <Watsonoutput key={i} value={this.props.chatcontent[i].text} />
+        <Watsonoutput key={i} value={this.props.chatcontent[i]} handleClick={this.props.handleClick} />
       )
     }
   }
@@ -69,8 +112,4 @@ export default class Chat extends React.Component {
 }
 
 
-// <div className="chat-message chat-message--bot"><p>hello</p></div>
-// <div className="chat-message chat-message--anchor-right"><p className="chat-message--user">hi</p></div>
-// <div className="chat-message chat-message--bot"><p>hello</p></div>
-// <div className="chat-message chat-message--anchor-right"><p className="chat-message--user">hi</p></div>
-// </div>
+    // <Button type="primary" onClick={sendrequrest()} >{props.label}</Button>

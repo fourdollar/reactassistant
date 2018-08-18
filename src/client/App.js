@@ -18,6 +18,7 @@ export default class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,7 @@ export default class App extends Component {
       if (this.state.value) {
         var context;
         var text = this.state.value;
+        console.log(this.state.responsePayload);
         var latestResponse = this.state.responsePayload;
         if (latestResponse) {
           context = latestResponse.context;
@@ -54,6 +56,26 @@ export default class App extends Component {
       }
       event.preventDefault();
     }
+  }
+
+  handleClick(text) {
+    console.log(text);
+    console.log('some word was submitted: ' + text);
+    if (text) {
+      var context;
+      console.log(this.state.responsePayload);
+      var latestResponse = this.state.responsePayload;
+      if (latestResponse) {
+        context = latestResponse.context;
+      }
+      // Send the user message
+      var chatcontent = this.state.chatcontent.slice();
+      this.sendRequest(text,context);
+
+      // need add an animation to shift button to right
+
+    }
+
   }
 
   sendRequest(text,context) {
@@ -80,22 +102,34 @@ export default class App extends Component {
         if (res.data.output.generic) {
           var responsedata = res.data.output.generic;
           var chatcontent = this.state.chatcontent.slice();
+          var eachtypecontent = {}
           for (var i = 0; i < responsedata.length; i++) {
             if (responsedata[i].response_type == "text") {
-              chatcontent.push({
-                from:"watson",
-                text:responsedata[i].text
-              })
-            }else if (responsedata[i].response_type == "image") {
-              chatcontent.push({
-                from:"watson",
-                img:responsedata[i].source
-              })
+              eachtypecontent.from = "watson"
+              eachtypecontent.text = responsedata[i].text
+            }
+            if (responsedata[i].response_type == "image") {
+              eachtypecontent.from = "watson"
+              eachtypecontent.img = responsedata[i].source
+            }
+            if (responsedata[i].response_type == "option") {
+              eachtypecontent.from = "watson"
+              eachtypecontent.button = responsedata[i].options
             }
           }
+          chatcontent.push(eachtypecontent)
           this.setState({chatcontent : chatcontent});
         }
       })
+      .catch(error => {
+        console.log(error)
+        var chatcontent = this.state.chatcontent.slice();
+        chatcontent.push({
+          from:"watson",
+          text:"there is something wrong please check console.log"
+        })
+        this.setState({chatcontent : chatcontent});
+      });
     }
 
   render() {
@@ -113,7 +147,8 @@ export default class App extends Component {
             <Chat value={this.state.value}
                   chatcontent={this.state.chatcontent}
                   handleChange={(e) => this.handleChange(e)}
-                  handleKeydown={(e) => this.handleKeydown(e)} />
+                  handleKeydown={(e) => this.handleKeydown(e)}
+                  handleClick={(data) => this.handleClick(data)} />
           </Col>
           <Col xs={0} sm={0} md={0} lg={6} className="chatcontainer">
             <Detail />

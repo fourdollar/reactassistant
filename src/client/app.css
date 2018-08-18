@@ -131,6 +131,24 @@ input{
   cursor: text;
 }
 
+.watsonbutton{
+  outline: none;
+  margin:0 20px 30px 0px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 15px;
+  background-color: #5dca88;
+  box-shadow: 0px 3px #279C56;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+}
+.watsonbutton:active {
+  position: relative;
+  top: 3px;
+  box-shadow: none;
+}
+
 /* =================chatbot part=================== */
 
 

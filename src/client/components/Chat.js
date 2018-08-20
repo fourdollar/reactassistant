@@ -52,10 +52,10 @@ class Watsonoutput extends React.Component {
             <p>
               {this.props.value.text}
             </p>
-            <p>日期: {date}</p>
-            <p>天气: {state}</p>
-            <p>最高气温: {maxtemp}</p>
-            <p>最低气温: {mintemp}</p>
+            <p>日付: {date}</p>
+            <p>天気: {state}</p>
+            <p>最高気温: {maxtemp}</p>
+            <p>最低気温: {mintemp}</p>
           </div>
         );
       }else{

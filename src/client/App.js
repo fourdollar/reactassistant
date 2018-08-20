@@ -108,7 +108,7 @@ export default class App extends Component {
               eachtypecontent.from = "watson"
               eachtypecontent.text = responsedata[i].text
 
-              if (responsedata[i].text.match("最近东京的天气")) {
+              if (responsedata[i].text.match("今日の天気は")) {
                 axios.get("https://free-api.heweather.com/s6/weather/forecast",{
                   params: {
                     key:"e74d5e41d8a5436b8fb961633f009b5b",

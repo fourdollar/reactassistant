@@ -107,6 +107,22 @@ export default class App extends Component {
             if (responsedata[i].response_type == "text") {
               eachtypecontent.from = "watson"
               eachtypecontent.text = responsedata[i].text
+
+              if (responsedata[i].text.match("最近东京的天气")) {
+                axios.get("https://free-api.heweather.com/s6/weather/forecast",{
+                  params: {
+                    key:"e74d5e41d8a5436b8fb961633f009b5b",
+                    location:"东京"
+                  }
+                })
+                .then(res => {
+                  console.log(res.data.HeWeather6[0].daily_forecast);
+                  var weatherdata = res.data.HeWeather6[0].daily_forecast
+                  eachtypecontent.weather = weatherdata;
+                  eachtypecontent.from = "watson"
+                  this.setState({chatcontent : chatcontent});
+                })
+              }
             }
             if (responsedata[i].response_type == "image") {
               eachtypecontent.from = "watson"

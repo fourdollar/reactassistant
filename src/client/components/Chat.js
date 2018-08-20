@@ -40,22 +40,39 @@ class Watsonoutput extends React.Component {
         </div>
       );
     }else{
-      return (
-        <div className="chat-message chat-message--bot">
-          <p>
-            {this.props.value.text}
-          </p>
-        </div>
-      );
+      if (this.props.value.weather) {
+        console.log(this.props.value);
+        var weatherdata = this.props.value.weather
+        var date= weatherdata[0].date
+        var state = weatherdata[0].cond_txt_d
+        var maxtemp = weatherdata[0].tmp_max
+        var mintemp = weatherdata[0].tmp_min
+        return (
+          <div className="chat-message chat-message--bot">
+            <p>
+              {this.props.value.text}
+            </p>
+            <p>日期: {date}</p>
+            <p>天气: {state}</p>
+            <p>最高气温: {maxtemp}</p>
+            <p>最低气温: {mintemp}</p>
+          </div>
+        );
+      }else{
+        return (
+          <div className="chat-message chat-message--bot">
+            <p>
+              {this.props.value.text}
+            </p>
+          </div>
+        );
+      }
+
     }
   }
 }
 
 class Watsonbutton extends React.Component {
-
-  sendRequest(){
-    this.props.handleClick("hi");
-  }
   render() {
     return (
       <button className="watsonbutton" onClick={()=>this.props.onClick()}>
@@ -110,6 +127,4 @@ export default class Chat extends React.Component {
     );
   }
 }
-
-
     // <Button type="primary" onClick={sendrequrest()} >{props.label}</Button>

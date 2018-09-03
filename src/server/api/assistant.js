@@ -46,6 +46,7 @@ function updateMessage(input, response) {
   }
   if (response.intents && response.intents[0]) {
     var intent = response.intents[0];
+
     // Depending on the confidence of the response the app can return different messages.
     // The confidence will vary depending on how well the system is trained. The service will always try to assign
     // a class/intent to the input. If the confidence is low, then it suggests the service is unsure of the

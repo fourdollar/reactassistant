@@ -95,7 +95,7 @@ body {
 .chat-message--user {
   border-radius: 1.5em;
   padding: 10px 20px;
-  background: #757575;
+  background: rgb(85, 183, 46);
   position: relative; }
   .chat-message--user:after {
     content: "";
@@ -109,7 +109,7 @@ body {
     border-right: 21px solid;
     border-bottom: 8px solid;
     border-left: 18px solid;
-    border-color: transparent #757575 transparent transparent; }
+    border-color: transparent rgb(85, 183, 46) transparent transparent; }
 
 .ant-layout-footer {
   padding: 2.5vw;
